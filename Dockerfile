@@ -1,9 +1,9 @@
-FROM openjdk:17-jdk-slim AS deploy
+FROM adoptopenjdk/openjdk11:alpine-jre
 
-WORKDIR /app
+ARG artifact=target/spring-boot-web.jar
 
-COPY ./target/*.jar ./
+WORKDIR /opt/app
 
-EXPOSE 8080
+COPY ${artifact} app.jar
 
-CMD ["java","-jar","app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
