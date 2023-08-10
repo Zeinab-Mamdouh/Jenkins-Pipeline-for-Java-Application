@@ -6,13 +6,7 @@ pipeline {
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
     }
   }
-  stages {
-    stage('Checkout') {
-      steps {
-        sh 'echo passed'
-        //git branch: 'main', url: 'https://github.com/Zeinab-Mamdouh/Jenkins-Pipeline-for-Java-Application.git'
-      }
-    }
+  
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
