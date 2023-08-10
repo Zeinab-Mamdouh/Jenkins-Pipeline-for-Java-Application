@@ -1,8 +1,6 @@
 pipeline {
   agent {
-  options {
-    timeout(time: 3, unit: 'MINUTES') 
-  }
+
     docker {
       image 'abhishekf5/maven-abhishek-docker-agent:v1'
       args '--user root -v /var/run/docker.sock:/var/run/docker.sock' // mount Docker socket to access the host's Docker daemon
@@ -22,6 +20,13 @@ pipeline {
         sh 'cd spring-boot-app && mvn clean package'
       }
     }
+
+    stage('Test') {
+        steps {
+            timeout(time: 5, unit: 'MINUTES') {
+            }
+        }
+        }
     stage('Static Code Analysis') {
       environment {
         SONAR_URL = "http://54.234.175.120:9000"
