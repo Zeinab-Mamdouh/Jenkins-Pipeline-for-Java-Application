@@ -13,6 +13,12 @@ pipeline {
         //git branch: 'main', url: 'https://github.com/Zeinab-Mamdouh/Jenkins-Pipeline-for-Java-Application.git'
       }
     }
+    stage('Clean Workspace') {
+        steps {
+            cleanWs()
+        }
+    }
+
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
