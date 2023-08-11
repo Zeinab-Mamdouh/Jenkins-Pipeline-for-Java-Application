@@ -8,14 +8,6 @@ pipeline {
   }
   stages {
 
-    stage('Checkout') {
-      steps {
-        sh 'echo passed'
-        git branch: 'main', credentialsId: 'Github', url: 'https://github.com/Zeinab-Mamdouh/Jenkins-Pipeline-for-Java-Application.git'
-      }
-    }
-    
-
     stage('Build and Test') {
       steps {
         sh 'ls -ltr'
